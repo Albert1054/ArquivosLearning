@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ArquivoLerning.Entities
@@ -21,6 +22,13 @@ namespace ArquivoLerning.Entities
         public double Total()
         {
             return Price * Quantity;
+        }
+
+        public override string ToString()
+        {
+            return Name
+                + ", "
+                + Total().ToString("F2",CultureInfo.InvariantCulture);
         }
     }
 }

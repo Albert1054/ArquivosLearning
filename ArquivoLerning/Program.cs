@@ -24,7 +24,6 @@ namespace ArquivoLerning
                         string[] lines = sr.ReadLine().Split(",");
                         string name = lines[0];
                         double price = double.Parse(lines[1],CultureInfo.InvariantCulture);
-                        Console.WriteLine(price);
                         int quantity = int.Parse(lines[2]);
                         list.Add(new Product(name,price,quantity));
                     }
@@ -33,7 +32,7 @@ namespace ArquivoLerning
                     {
                         foreach(Product p in list)
                         {
-                            sw.WriteLine(p.Name + ", " +p.Total().ToString("F2",CultureInfo.InvariantCulture));
+                            sw.WriteLine(p);
                         }
                     }
                 }
