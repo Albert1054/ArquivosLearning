@@ -11,21 +11,19 @@ namespace ArquivoLerning
     {
         static void Main(string[] args)
         {
-            string sourcePath = @"C:\Users\caval\Documents\temp\Origem.csv";
-            string targetPath = @"C:\Users\caval\Documents\temp\out\summary.csv";
+            Console.Write("Enter full path: ");
+            string sourcePath = Console.ReadLine();
             List<Product>list = new List<Product>();
 
             try
             {
+                string targetPath = Path.GetDirectoryName(sourcePath) + @"\out\summary.csv";
+                Console.WriteLine(targetPath);
                 using (StreamReader sr = File.OpenText(sourcePath))
                 {
                     while (!sr.EndOfStream)
                     {
-                        string[] lines = sr.ReadLine().Split(",");
-                        string name = lines[0];
-                        double price = double.Parse(lines[1],CultureInfo.InvariantCulture);
-                        int quantity = int.Parse(lines[2]);
-                        list.Add(new Product(name,price,quantity));
+                        list.Add(new Product(sr.ReadLine().Split(",")));
                     }
                     Directory.CreateDirectory(Path.GetDirectoryName(sourcePath) + @"\out");
                     using (StreamWriter sw = File.AppendText(targetPath))

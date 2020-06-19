@@ -12,11 +12,12 @@ namespace ArquivoLerning.Entities
         public int Quantity { get; private set; }
         public Product() { }
 
-        public Product(string name, double price, int quantity)
+        public Product(string[] vet)
         {
-            Name = name;
-            Price = price;
-            Quantity = quantity;
+
+            Name = vet[0];
+            Price = double.Parse(vet[1],CultureInfo.InvariantCulture);
+            Quantity = int.Parse(vet[2]);
         }
 
         public double Total()
